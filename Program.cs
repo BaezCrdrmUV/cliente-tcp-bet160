@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace SocketCom
 {
@@ -12,14 +13,15 @@ namespace SocketCom
                 server.Listen();
             } else if(args[0] == "client")
             {
-                string name = "Cliente";
-                try
-                {
-                    name = args[1];
-                }
-                catch (Exception) { }
 
-                // Ejecución de cliente .NET Core
+                TCPCliente cliente = new TCPCliente();
+                IPAddress a = IPAddress.Parse("127.0.0.1");
+                cliente.conectarConServidor(a, 8080);
+
+                while(true){
+                    cliente.EnviarMensajeAServidor();
+                    cliente.LeerMensajeDelServidor();
+                }
             }
         }
     }

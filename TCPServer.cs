@@ -40,7 +40,7 @@ namespace SocketCom
 
                         while(msg != null && !msg.StartsWith("bye"))
                         {
-                            byte[] data = Encoding.UTF8.GetBytes("Envía datos. Envía \"bye\" para terminar");
+                            byte[] data = Encoding.UTF8.GetBytes("Envia datos. Envia \"bye\" para terminar");
                             client.Send(data);
 
                             byte[] buffer = new byte[1024];
